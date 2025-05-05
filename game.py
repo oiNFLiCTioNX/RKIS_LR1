@@ -31,10 +31,12 @@ class Player:
     def attack(self, enemy):
         stamina_used = int(self.damage * 0.1)
         damage_dealt = self.damage - enemy.get_damage_reduction(self.damage)
-        if damage_dealt > 0:
+        if damage_dealt > 0 and self.stamina > stamina_used:
             enemy.take_damage(damage_dealt)
             self.stamina -= stamina_used
-        print(f"{self.name} нанес {damage_dealt} урона {enemy.name} и использовал {stamina_used} выносливости.")
+            print(f"{self.name} нанес {damage_dealt} урона {enemy.name} и использовал {stamina_used} выносливости.")
+        else:
+            print("Вы слишком слабы для нанесения удара врагу!")
 
     def defend(self):
         self.defending = True
