@@ -273,7 +273,7 @@ if __name__ == "__main__":
                         player_info_row = player_info_lines[i] if i < max_player_info_height else ''
                         enemy_info_row = enemy_info_lines[i] if i < max_enemy_info_height else ''
                         print(f"{player_info_row} | {enemy_info_row}")
-                    action = input(f"Введите действие (a - атаковать, d - защищаться, r - убежать): ").strip().lower()
+                    action = input(f"Введите действие (a - атаковать, d - защищаться): ").strip().lower()
                     if action == 'a':
                         player.attack(enemy)
                         if enemy.is_alive():
