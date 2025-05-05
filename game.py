@@ -29,10 +29,12 @@ class Player:
             print(f"{self.name} восстановил здоровье: {health_restored}, Восстановил выносливость: {stamina_restored}")
 
     def attack(self, enemy):
+        stamina_used = int(self.damage * 0.1)
         damage_dealt = self.damage - enemy.get_damage_reduction(self.damage)
         if damage_dealt > 0:
             enemy.take_damage(damage_dealt)
-        print(f"{self.name} нанес {damage_dealt} урона {enemy.name}.")
+            self.stamina -= stamina_used
+        print(f"{self.name} нанес {damage_dealt} урона {enemy.name} и использовал {stamina_used} выносливости.")
 
     def defend(self):
         self.defending = True
